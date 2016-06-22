@@ -1,0 +1,14 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<RenoiseScriptingTool doc_version="0">
+  <Name>impulseBuddy</Name>
+  <Id>com.protman.impulseBuddy</Id>
+  <Version>0.62015</Version>
+  <ApiVersion>4</ApiVersion>
+  <Author>protman | protman@gmail.com</Author>
+  <AutoUpgraded>false</AutoUpgraded>
+  <Category>misc</Category>
+  <Description>impulse tracker shortcuts</Description>
+  <Homepage>http://protman.com</Homepage>
+  <Platform/>
+  <Icon/>
+</RenoiseScriptingTool>
