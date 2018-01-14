@@ -1,14 +1,19 @@
 
 function WipeEfxFromSelection()
-local ecvisible=nil
+local s = renoise.song()
 
-if renoise.song().selection_in_pattern==nil then return
-else end
-ecvisible=renoise.song().tracks[renoise.song().selected_track_index].visible_effect_columns
+if s.selection_in_pattern==nil then return end
 
-for i=renoise.song().selection_in_pattern.start_line,renoise.song().selection_in_pattern.end_line do renoise.song().patterns[renoise.song().selected_pattern_index].tracks[renoise.song().selected_track_index].lines[i].effect_columns[ecvisible].number_string="" 
-renoise.song().patterns[renoise.song().selected_pattern_index].tracks[renoise.song().selected_track_index].lines[i].effect_columns[ecvisible].amount_string=""
+local ecvisible = s:track(s.selected_track_index).visible_effect_columns
+local pattern_track = s:pattern(s.selected_pattern_index):track(s.selected_track_index)
+
+for line_index = s.selection_in_pattern.start_line, s.selection_in_pattern.end_line do
+  local line = pattern_track:line(line_index)
+  for effect_column_index = 1, ecvisible do
+    line:effect_column(effect_column_index):clear()
+  end
 end
+
 end
 
 renoise.tool():add_keybinding {name = "Global:impulseBuddy:Wipe Effects From Selection", invoke = function() WipeEfxFromSelection() end}
