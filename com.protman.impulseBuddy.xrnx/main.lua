@@ -1,13 +1,13 @@
 
 function WipeEfxFromSelection()
-local song = renoise.song()
+local s = renoise.song()
 
-if song.selection_in_pattern==nil then return end
+if s.selection_in_pattern==nil then return end
 
-local ecvisible = song:track(song.selected_track_index).visible_effect_columns
-local pattern_track = song:pattern(song.selected_pattern_index):track(song.selected_track_index)
+local ecvisible = s:track(s.selected_track_index).visible_effect_columns
+local pattern_track = s:pattern(s.selected_pattern_index):track(s.selected_track_index)
 
-for line_index = song.selection_in_pattern.start_line, song.selection_in_pattern.end_line do
+for line_index = s.selection_in_pattern.start_line, s.selection_in_pattern.end_line do
   local line = pattern_track:line(line_index)
   for effect_column_index = 1, ecvisible do
     line:effect_column(effect_column_index):clear()
